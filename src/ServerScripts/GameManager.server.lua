@@ -6,6 +6,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 
 local GameConfig = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("GameConfig"))
+local BloodEffect = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("BloodEffect"))
 
 -- Wait for ZombieCreator
 while not _G.ZombieCreator do
@@ -92,6 +93,12 @@ function GameManager.SpawnZombies()
 			humanoid.Died:Connect(function()
 				GameManager.AliveZombies = GameManager.AliveZombies - 1
 				print("Zombie died! Remaining: " .. GameManager.AliveZombies)
+
+				-- Create blood effect at zombie position
+				local rootPart = zombie:FindFirstChild("HumanoidRootPart")
+				if rootPart then
+					BloodEffect.CreateBloodEffect(rootPart.Position, GameConfig.BloodEffect)
+				end
 
 				-- Check win condition
 				if GameManager.AliveZombies <= 0 then

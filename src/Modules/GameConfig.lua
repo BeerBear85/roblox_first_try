@@ -19,9 +19,17 @@ GameConfig.Zombie = {
 	DetectionRange = 50 -- studs
 }
 
+-- Blood Effect Settings
+GameConfig.BloodEffect = {
+	ParticleCount = 30, -- number of particles to emit
+	ParticleSize = 0.5, -- size of each particle
+	ParticleLifetime = 1, -- how long particles last (seconds)
+	ParticleSpeed = 15 -- speed particles fly outward
+}
+
 -- Spawn Settings
 GameConfig.Spawning = {
-	SpawnDelay = 60, -- seconds before first wave
+	SpawnDelay = 15, -- seconds before first wave
 	ZombieCount = 4, -- number of zombies to spawn (3-5 range)
 	SpawnRadius = 15 -- radius around spawn point
 }
